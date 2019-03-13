@@ -411,7 +411,7 @@ camera_formats_t*  camera_formats_new(const camera_t* camera)
           frmival.width = frmsize.discrete.width;
           frmival.height = frmsize.discrete.height;
           //printf("checking frameintervals for discrete size: %dx%dpx\n", frmival.width, frmival.height);
-          if (v4l2_ioctl(camera->fd, VIDIOC_ENUM_FRAMEINTERVALS, &frmival) == -1) {
+          if (ioctl(camera->fd, VIDIOC_ENUM_FRAMEINTERVALS, &frmival) == -1) {
             //printf("frameintervals ioctl failed\n");
             break;
           }
@@ -440,7 +440,7 @@ camera_formats_t*  camera_formats_new(const camera_t* camera)
             frmival.pixel_format = fmt.pixelformat;
             frmival.width = frame_sizes[l].width;
             frmival.height = frame_sizes[l].height;
-            if (v4l2_ioctl(camera->fd, VIDIOC_ENUM_FRAMEINTERVALS, &frmival) != -1) {
+            if (ioctl(camera->fd, VIDIOC_ENUM_FRAMEINTERVALS, &frmival) != -1) {
               if (frmival.type == V4L2_FRMIVAL_TYPE_DISCRETE) {
                 //printf("\t- fps: %d/%d\n",
                     //       frmival.discrete.numerator,frmival.discrete.denominator);
