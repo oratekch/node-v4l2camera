@@ -39,7 +39,7 @@
         "android"
     ],
     "dependencies": {
-        "nan": ">=2.3.0"
+        "nan": "2.12.1"
     },
     "contributors": [
         "Tim Cameron Ryan <id@timryan.org> (https://github.com/tcr)",
